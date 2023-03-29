@@ -1,0 +1,27 @@
+<div class="container my-5 d-flex justify-content-center align-items-center">
+  <div class="bg-white rounded p-4 shadow card-transparent">
+    <div class="d-flex justify-content-center mb-3">
+      <%= image_tag "logoC.jpeg", class: "img-fluid" %>
+    </div>
+    
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group">
+        <%= f.label :email, "Cuenta" %>
+        <br>
+        <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+      </div>
+      <br>
+      <div class="form-group">
+        <%= f.label :password, "Contraseña" %>
+        <br>
+        <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+      </div>
+      <br>
+      <div class="form-group d-flex justify-content-center">
+        <%= f.submit "Iniciar sesión", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

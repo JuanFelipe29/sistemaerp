@@ -1,0 +1,52 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Insumos</h1>
+
+<%= link_to "Agregar Insumo", "#modal-supply", class: "btn btn-primary", data: { toggle: "modal" } %>
+<br>
+<br>
+<div id="supplies">
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Proveedor</th>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Precio unitario</th>
+        <th>Valor total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @supplies.each do |supply| %>
+        <tr id="<%= dom_id supply %>">
+          <td><%= supply.supplier_id %></td>
+          <td><%= supply.code %></td>
+          <td><%= supply.name %></td>
+          <td><%= supply.quantity %></td>
+          <td><%= supply.unit_price %></td>
+          <td><%= supply.total_value %></td>
+          <td><%= link_to "Ver detalle", supply %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="modal fade" id="modal-supply" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ingreso de Insumo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', supply: Supply.new, class: "form-horizontal" %>
+      </div>
+    </div>
+  </div>
+</div>
